@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "CrearCuenta";
+}
+
+
+<form action="Usuarios/RegistrarUser" method="post">    
+
+    <input type="email" name="e-Mail" id="txtusuario" placeholder="e-Mail *" required>
+    <input type="email" name="e-Mail2" placeholder="Confirme su e-Mail *" required>
+    <input type="password" name="Contraseña1" id="txtcontra" placeholder="Password *" required>
+    <input type="password" name="Contraseña2" placeholder="Confirme Password *" required>
+    <input type="submit" value="Crear Cuenta" id="boton" onClick="validar()">
+    <p>* Campos Obligatorios<p>
+
+</form>    
+
+
+
+

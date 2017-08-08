@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "UsuariosRegistrados";
+}
+
+<h2>UsuariosRegistrados</h2>
+
+
+<form method="post" action="@Url.Action("Login","Usuarios")">
+    </br>
+
+
+    <input type="email" name="NombreUsuario" placeholder="e-Mail" required>
+    <input type="password" name="Contraseña" placeholder="Password" required>
+    <input type="submit" value="Ingresar" id="boton">
+    <a href="">¿olvido su contraseña?</a>
+    <a href="usuariosnuevos.html">Crear Nueva Cuenta</a>
+    <li> @Html.ActionLink("Vista Del Hotel", "VistaDelHotel", "Home")</li>s
+
+
+
+
+
+</form>
+
+

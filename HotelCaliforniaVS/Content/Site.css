@@ -1,0 +1,125 @@
+﻿#cabecera {
+    text-align: center;
+    color: black;
+    background: rgba(0,0,0,0.3);
+    border-radius: 3px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.carousel-inner .item img {
+    margin: 0 auto;
+}
+
+#menu2 {
+    background-color: rgba(0,0,0,0.0);
+    border-radius: 3px;
+}
+
+#pieimagen {
+    background-color: rgba(0,0,0,0.6);
+}
+
+
+
+
+body {
+    
+    background-image: url('images/fondoWeb.jpg') ;
+    background-repeat: round;
+    margin-top: 60px;
+}
+
+
+
+h1 {
+    color: black;
+}
+
+h4, h3, p ,a{
+    color: white;
+}
+
+
+
+footer {
+    background: rgba(0,0,0,0.5);
+    border-radius: 3px;
+}
+
+address {
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    font-style: italic;
+}
+
+article {
+    background: rgba(0,0,0,0.3);
+    margin-bottom: 8px;
+    color: white;
+}
+
+aside {
+    background: rgba(0,0,0,0.3);
+    color: white;
+}
+
+
+
+form {
+    width: 450px;
+    margin: auto;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+
+h2 {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 17px;
+    border-radius: 7px;
+}
+
+textarea {
+    min-height: 200px;
+    max-height: 200px;
+    max-width: 420px;
+}
+
+#boton {
+    background: rgb(35, 34, 34);
+    color: rgb(137, 130, 130);
+    padding: 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+    #boton:hover {
+        cursor: pointer;
+    }
+
+
+/*responsive*/
+@media(max-width: 480px) {
+
+       form {
+             width: 100%;
+             }
+}

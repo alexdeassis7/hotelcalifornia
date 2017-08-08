@@ -1,0 +1,164 @@
+﻿@using HotelCaliforniaVS.Models;
+@{
+    Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head> 
+<!--
+
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="Site.css" />
+   <link rel="shortcut icon" type="image/x-icon" img src="~/favicon.ico" />
+   
+ 
+   
+    -->
+
+<body>
+    <!--BARRA DE NAVEGACION-->
+    <div class="container">
+        <nav class="navbar  navbar-fixed-top navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+                </div>
+                <a class="navbar-brand" href=@Html.Action("Hotel & Resort California", "Index", "Home")</a>
+
+                <div class="colapse navbar-collapse" id="navbar-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a>Inicio</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Imagenes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="imagenes.html">Habitaciones</a></li>
+                                <li><a href="#">Servicios</a></li>
+
+                                <li>@Html.ActionLink("Vista Del Hotel", "VistaDelHotel", "Home")</li>
+
+
+                            </ul>
+                        </li>
+
+                        <li>@Html.ActionLink("Reservas", "Reservas", "Home")</li>
+                        <li>@Html.ActionLink("Habitaciones", "habitaciones", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contacto", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Usuarios <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li><a href="#">Administrador</a></li>
+                            </ul>
+
+                        </li>
+
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id="iniciar"><a href="#" data-toggle="modal" data-target="#modalInicioSesion">Iniciar sesión</a></li>
+                            <li class="dropdown menuUsuario hide">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="nombreUsuario">Roberto</span><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("MiPerfil","Usuarios")">Mi perfil</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a id="salir" href="@Url.Action("Logout","Usuarios")">Salir</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </ul>
+                </div>
+
+
+        </nav>
+        @Html.Partial("~/Views/Shared/Mensajes.cshtml")
+        @RenderBody()
+
+    </div>
+    </>
+    <div class="container body-content text-center">
+
+        <hr />
+        <footer>
+            <!--informacion institucional-->
+            <address>
+                <p> &copy; @DateTime.Now.Year - Los Derechos    Reservados Av.DIaz Velez 1235   Tel: 0800- 555- 3475    C.A.B.A Argentina </p>
+            </address>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal fade" id="modalInicioSesion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <form class="form-signin" method="post" action="@Url.Action("Login", "Usuarios")">
+
+                <!-- <label for="loginEmail" class="sr-only">e-mail</label>-->
+                <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Email" required autofocus="">
+
+                <!--<label for="loginContraseña" class="sr-only">Contraseña</label>-->
+                <input type="password" id="loginContraseña" name="password" class="form-control" placeholder="Contraseña" required autofocus="">
+
+                <!--boton  que ingresa el formulario-->
+                <input type="submit" value="Ingresar" id="ingresar" class="btn btn-primary" data-dismiss="modal">
+
+
+                <a href="">¿olvido su contraseña?</a>
+                <a href="usuariosnuevos.html">Crear Nueva Cuenta</a>
+                <p>Precione la tecla ESC para cerrar</p>
+            </form>
+
+
+            <script src="~/Scripts/JavaScriptHotel.js"></script>
+
+
+        </div>
+    </div>
+
+
+    <!-- Modal de nueva reserva -->
+    <div class="modal fade" id="modalNuevaReserva" tabindex="-1" role="dialog" aria-labelledby="ModalNuevaReserva">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("Crear","Reservas")">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalNuevaReserva">Nueva Reserva...</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="tituloArticulo">Titulo</label>
+                        <input type="text" name="titulo" id="tituloArticulo" class="form-control" placeholder="el título del artículo..." required autofocus>
+                        <label for="textoArticulo">Texto</label>
+                        <textarea id="textoArticulo" name="texto" class="form-control" placeholder="Texto..." required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <input id="agregarReserva" type="submit" class="btn btn-primary" value="Agregar!" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

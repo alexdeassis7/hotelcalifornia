@@ -1,0 +1,24 @@
+﻿
+
+@{
+    ViewBag.Title = "Contacto";
+}
+
+
+
+<p><b>@ViewBag.nombre, nos comunicarewmos con usted a la brevedad. </b></p>
+
+
+<form action="Contacto" method="POST">
+    
+    <h2>Contacto</h2>
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="email" name="correo" placeholder="Correo" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+    <textarea name="mensaje" placeholder="Escriba aqui su mensaje" required></textarea>
+    <input type="submit" value="ENVIAR CONSULTA" id="boton">
+
+
+</form>
+
+

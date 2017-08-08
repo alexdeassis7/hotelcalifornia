@@ -1,0 +1,61 @@
+﻿
+@using HotelCaliforniaVS.Models;
+@{
+    Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
+}
+<h2>reservas</h2>
+
+@model HotelCaliforniaVS.Models.Reservas
+@{
+    ViewBag.Title = "Mi Perfil y reservas";
+}
+
+@if (usuario == null)
+{
+    <div>
+        <form action="usuariosregistrados.html" method="post">
+            <input type="submit" value="Iniciar Secion" id="boton" data-toggle="modal" data-target="#modalInicioSesion" />
+
+            <h4>@Html.ActionLink("¿no tienes una cuenta ?", "CrearCuenta", "Home")</h4>
+        </form>
+    </div>
+
+}
+else
+{
+
+                    <form action="" method="post">
+
+                        <h3>RESERVE SU ESTADIA</h3>
+
+                        <h4>Fecha de Ingreso</h4>
+                        <input type="datetime-local" name="FechaIngreso" required>
+
+                        <h4>Fecha de Egreso</h4>
+                        <input type="datetime-local" name="FechaSalida" required>
+
+                        <h4>Cantidad de Niños</h4>
+                        <input type="number" name="niños" min="1" max="10" step="1" value="0">
+
+                        <h4>Cantidad de Adultos</h4>
+                        <input type="number" name="adultos" min="1" max="10" step="1" value="1" required>
+
+                        <!--<input type="radio" name="tipo" value="simple" checked >
+                        Simple<br>
+
+                        <input type="radio" name="tipo" value="double" >
+                        dobles<br>
+
+                        <input type="radio" name="tipo" value="triples" >
+                        Triples<br>
+
+                        <input type="radio" name="tipo" value="suite" >
+                        Suite<br>-->
+
+                        <input type="submit" value="Reservar" id="boton">
+                    </form>
+           
+    
+            }
+
+
